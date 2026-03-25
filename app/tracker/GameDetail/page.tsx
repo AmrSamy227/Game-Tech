@@ -1,14 +1,14 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useAuth } from "../../contexts/AuthContext"
-import type { Game } from "../../lib/gamesData"
+import { useAuth } from "@contexts/AuthContext"
+import type { Game } from "@lib/gamesData"
 import { Heart, Bell, EyeOff, Plus, Clock, CheckCircle, StarIcon, X } from "lucide-react"
-import AddToListModal from "../../components/AddToListModal"
-import AuthModal from "../../components/AuthModal"
-import { supabase } from "../../lib/supabase"
-import MediaGallery from "../../components/MediaGallery"
-import { gamesLibrary } from "../../lib/gamesData"
+import AddToListModal from "@components/AddToListModal"
+import AuthModal from "@components/AuthModal"
+import { supabase } from "@lib/supabase"
+import MediaGallery from "@components/MediaGallery"
+import { gamesLibrary } from "@lib/gamesData"
 
 interface GameDetailPageProps {
   params: { id: string } // dynamic route: /tracker/GameDetail/[id]
