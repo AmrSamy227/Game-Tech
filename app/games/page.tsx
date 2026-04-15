@@ -102,7 +102,7 @@ export default function AllGamesPage() {
     }),
   ]
 
-  const applyFilters = (genre, size, developer, year, query) => {
+  const applyFilters = (genre: string, size: string, developer: string, year: string, query: string) => {
     let filtered = [...gamesLibrary]
 
     if (genre !== "all") {
@@ -126,7 +126,7 @@ export default function AllGamesPage() {
 
     if (year !== "year-all") {
       filtered = filtered.filter((game) => {
-        const y = Number.parseInt(game.release_year as any)
+        const y = Number.parseInt(String(game.release_year))
         if (year === "year-2000-2005") return y >= 2000 && y <= 2005
         if (year === "year-2006-2010") return y >= 2006 && y <= 2010
         if (year === "year-2011-2015") return y >= 2011 && y <= 2015
@@ -149,7 +149,7 @@ export default function AllGamesPage() {
     setCurrentPage(1)
   }
 
-  const handleFilterChange = (type, value) => {
+  const handleFilterChange = (type: string, value: string) => {
     if (type === "genre") setSelectedGenre(value)
     if (type === "size") setSelectedSize(value)
     if (type === "developer") setSelectedDeveloper(value)
@@ -169,7 +169,7 @@ export default function AllGamesPage() {
   const indexOfFirstGame = indexOfLastGame - gamesPerPage
   const currentGames = filteredGames.slice(indexOfFirstGame, indexOfLastGame)
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
 
   const getPageNumbers = () => {
     const pages = []
@@ -197,7 +197,7 @@ export default function AllGamesPage() {
     return pages
   }
 
-  const FilterSection = ({ title, options, selected, onChange }) => (
+  const FilterSection = ({ title, options, selected, onChange }: { title: string; options: string[]; selected: string; onChange: (value: string) => void }) => (
     <div className="bg-[#111] p-6 rounded-xl mb-6">
       <div className="flex items-center gap-2 mb-4">
         <Filter size={20} className="text-gray-400" />
