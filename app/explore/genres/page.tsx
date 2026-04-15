@@ -7,12 +7,12 @@ import { getGenreImage } from '@/lib/genreImages';
 // --- HELPER FUNCTIONS & CONSTANTS ---
 
 // 1. Function to capitalize the first letter of each word (for display)
-const formatGenreName = (genre) => {
+const formatGenreName = (genre: string): string => {
   return genre.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 };
 
 // 2. Helper to simulate fetching game media by ID, adapted to use gamesLibrary
-const getGameMediaByBanner = (gameId) => {
+const getGameMediaByBanner = (gameId: number) => {
     // Find the game in the library
     const game = gamesLibrary.find(g => g.id === gameId);
     // Return the banner image if found, or a placeholder object
