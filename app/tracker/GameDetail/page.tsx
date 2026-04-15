@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { useAuth } from "../contexts/AuthContext"
 import type { Game } from "../lib/gamesData"
 import { Heart, Bell, EyeOff, Plus, Clock, CheckCircle, StarIcon, X } from "lucide-react"
@@ -9,12 +10,28 @@ import AuthModal from "../components/AuthModal"
 import { supabase } from "../lib/supabase"
 import MediaGallery from "../../game/[id]/MediaGallery"
 
+// Empty page - this is for tracker routing
+export default function GameDetailPage() {
+  const router = useRouter()
+
+  useEffect(() => {
+    router.push("/tracker")
+  }, [router])
+
+  return (
+    <div className="flex items-center justify-center min-h-screen">
+      <p className="text-gray-400">Loading...</p>
+    </div>
+  )
+}
+
+// Export the GameDetailModal component for use in other pages
 interface GameDetailProps {
   game: Game
   onClose: () => void
 }
 
-export default function GameDetail({ game, onClose }: GameDetailProps) {
+export function GameDetailModal({ game, onClose }: GameDetailProps) {
   const { user } = useAuth()
   const [currentStatus, setCurrentStatus] = useState<string | null>(null)
   const [isFavorite, setIsFavorite] = useState(false)
